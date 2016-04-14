@@ -1,0 +1,86 @@
+<div class="create_pin_cover">
+    <div class="create_pin_holder">
+        <div class="w-row">
+            <div class="w-col w-col-6 w-col-small-6 create_pin_col_1">
+                <label for="pin_image" class='whatever'>
+                      <img src="https://daks2k3a4ib2z.cloudfront.net/55eb2faca85cc70a6a61a2ee/5677ec0bf53d0d481a9d983a_attachment.svg" class='pin_avatar'>
+                      <h4 style="color: white; opacity: 0.7;"> 1 MB or less, please </h4>
+                </label>
+                <%= form_for Pin.new, remote: true do |f| %>
+                
+                    <div class="field">
+                      <%= f.file_field :image, class: 'inputfile' %>
+                    </div>
+                    
+                    <div class="field">
+                      <%= f.text_field :title, placeholder: 'Title' %>
+                    </div>
+                    
+                    <%= hidden_field_tag 'board_id', '10' %>
+                    
+                    <div class="create">
+                      <%= f.submit 'Choose a board and create a pin', class: 'w-button button_start disabled_styling', data: {disable_with: 'Sending your pin to the headquarters...'}, accept: 'image/jpeg,image/png,image/jpg'  %>
+                    </div>
+                    
+                <% end %>
+                <img src="" class="create_pin_image">
+            </div>
+            <h4 style="box-shadow: 0 2px 2px -2px #232323;margin-top: 3%;padding-bottom: 3%;"> Choose a board</h4>
+            <div class="w-col w-col-6 w-col-small-6 create_pin_col_2">
+                <% current_user.boards.each do |board| %>
+                    <div class="w-inline-block create_pin_choose_board" data-board=<%= board.id %> >
+                        <div><%= board.title %></div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <div class="repin_close">
+        <div>X</div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    
+    $('.create_pin_col_2').niceScroll();
+    
+    $('.button_start').attr('disabled', 'true')
+
+    $('.create_pin_choose_board').click(function() {
+        $('.create_pin_choose_board').removeClass('selected_board');
+        $(this).addClass('selected_board');
+        $('#board_id').attr('value', $('.selected_board').attr('data-board'))
+        $('.button_start').removeClass('disabled_styling')
+        $('.button_start').removeAttr('disabled')
+    });
+
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('.create_pin_image').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#pin_image").change(function() {
+        var size_in_megabytes = this.files[0].size / 1024 / 1024;
+        if (size_in_megabytes > 1) {
+            swal({
+                title: "Try it again",
+                text: "Keep the image size below 1MB and only .jpg, .jpeg and .png please",
+                type: "error",
+                timer: 5000
+            });
+        }
+        else {
+            readURL(this);
+        };
+    });
+});
+</script>

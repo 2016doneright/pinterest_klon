@@ -1,0 +1,27 @@
+<li class="list_item comment_<%= comment.id %>">
+ <div class="w-row">
+  <div class="w-col w-col-2 w-clearfix">
+   <%= link_to has_boards_path(comment.user.profile_name), data: {no_turbolink: 'true'} do %>
+     <%= image_tag(comment.user.avatar.url, class: "comment_avatar") %>
+   <% end %>
+  </div>
+  <div class="w-col w-col-10">
+   <div class="comment_block">
+     <div class="comment_user_name">
+       <%= link_to has_boards_path(comment.user.profile_name), class: 'comment_style', data: {no_turbolink: 'true'} do %>
+         <%= comment.user.real_name %>
+       <% end %>
+     </div>
+     <div class="created_at">
+       <div><%= time_ago_in_words(comment.created_at) %> ago</div>
+     </div>
+     <% if comment.user == current_user %>
+        <%= link_to comment_path(comment), method: :delete, remote: true do %>
+            <%= image_tag "erase.svg", class: "ff" %>
+        <% end %>
+    <% end %>
+     <div class="content"><%= comment.content %></div>
+   </div>
+  </div> 
+ </div>
+</li>

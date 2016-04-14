@@ -1,0 +1,17 @@
+<div class="repin_cover">
+    <div class="repin_holder">
+        <div class="w-row">
+            <div class="w-col w-col-6 w-col-small-6 repin_col_1"><img src="" class="repin_image"></div>
+            <div class="w-col w-col-6 w-col-small-6 repin_col_2">
+                <% current_user.boards.each do |board| %>
+                    <div class="w-inline-block repin_to_board" data-board=<%= board.id %> >
+                        <div><%= board.title %></div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <div class="repin_close">
+        <div>X</div>
+    </div>
+</div>

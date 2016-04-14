@@ -1,0 +1,10 @@
+<% if current_user.liked?(pin) %>
+    <%= link_to unlike_this_pin_path(pin), method: :delete, remote: true, class: "w-inline-block like_button_holder" do%>
+        <img src="https://daks2k3a4ib2z.cloudfront.net/55eb2faca85cc70a6a61a2ee/56637c01ebcbd87942dcce07_heart_white.svg" class="like_button">
+        <img src="https://daks2k3a4ib2z.cloudfront.net/55eb2faca85cc70a6a61a2ee/5671a41678573d242c581765_check_white.svg" class="check">
+    <% end %>
+<% else %>
+    <%= link_to like_this_pin_path(pin), method: :put, remote: true, class: "w-inline-block like_button_holder" do %>
+        <img src="https://daks2k3a4ib2z.cloudfront.net/55eb2faca85cc70a6a61a2ee/56637c01ebcbd87942dcce07_heart_white.svg" class="like_button">
+    <% end %>
+<% end %>

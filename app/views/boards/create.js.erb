@@ -1,0 +1,55 @@
+<% if @board.save %>
+    $('.create_board_cover').fadeOut('fast');
+    $('#new_board')[0].reset();
+    $('.repin_col_2').prepend('<div class="w-inline-block repin_to_board" data-board="<%= @board.id %>"><div><%= @board.title.capitalize %></div></div>');
+    $('.create_pin_col_2').prepend('<div class="w-inline-block create_pin_choose_board" data-board="<%= @board.id %>"><div><%= @board.title.capitalize %></div></div>');
+    $('.create_pin_choose_board').click(function() {
+        $('.create_pin_choose_board').removeClass('selected_board');
+        $(this).addClass('selected_board');
+        $('#board_id').attr('value', $('.selected_board').attr('data-board'))
+        $('.button_start').removeClass('disabled_styling')
+        $('.button_start').removeAttr('disabled')
+    });
+    
+    $('.repin_to_board').click(function() {
+
+            var pin = $('.selected').attr('data-pin')
+            var board = $(this).attr('data-board');
+
+            $.ajax({
+
+                url: "/repins",
+                type: "POST",
+                data: {
+                    pin_id: pin,
+                    board_id: board
+                },
+                dataType: "script",
+                success: function() {
+                    $('.repin_cover').fadeOut('fast')
+                },
+                error: function() {
+                    swal({   
+                         title: "Hmmmm!",   
+                         text: "Looks like you are trying to save that pin multiple times to that board",   
+                         type: "error",
+                         timer: 2000
+                    });
+                }
+            })
+        })
+        
+    swal({   
+        title: "Good job!",   
+        text: "The board has been created, pins inside?",   
+        type: "success",
+        timer: 3000
+        });
+<% else %>
+    swal({   
+        title: "Did not save!",   
+        text: "<%= j (@board.errors.full_messages.first).html_safe %>",   
+        type: "error",
+        timer: 3000
+        });
+<% end %>

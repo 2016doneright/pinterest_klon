@@ -1,0 +1,8 @@
+<%= render 'partials/tabs' %>
+
+<div class="profile_page">
+  <div class="profile_hero" style='background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.54)), url(<%= @user.cover.url %>);'>
+       <%= image_tag(@user.avatar.url, class: 'profile_user') %>
+    <div class="name"><%= @user.real_name %></div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="create_board_cover">
+    <div class="create_board_holder">
+      <h3 class="board_create_title">Create a board</h3>
+          <%= form_for (Board.new), remote: true do |f| %>
+              <%= f.text_field :title, class: 'w-input board_text_field', placeholder: 'How do you name your precious board?' %>
+              <%= f.text_area(:description, class: 'w-input board_text_field', placeholder: "What's your board about?") %>
+              <%= f.select(:category, [["Animals and pets",'Animals and pets'], ["Architecture",'Architecture'], ["Art",'Art'], ["Cars and motorcycles",'Cars and motorcycles'], ["Celebrities",'Celebrities'], ["DIY and crafts",'DIY and crafts'], ["Design",'Design'], ["Education",'Education'], ["Film, music and books",'Film, music and boosk'], ["Food and drink",'Food and drink'], ["Gardening",'Gardening'], ["Geek",'Geek'], ["Hair and beauty",'Hair and beauty'], ["Health and fitness",'Health and fitness'],["History",'History'], ["Holidays and events",'Holidays and events'], ["Home decor",'Home decor'], ["Humor",'Humor'], ["Illustrations and posters",'Illustrations and posters']], {prompt: "What kind of board is it" }) %>
+              <%= f.submit 'Create a board', class: 'w-button create_board_button', data: {disable_with: 'Creating board..'} %>
+          <% end %>
+    </div>
+    <div class="repin_close">
+      <div>X</div>
+    </div>
+  </div>

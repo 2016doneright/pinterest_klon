@@ -1,0 +1,9 @@
+<% if current_user.following?(board) %> 
+     <%= link_to unfollow_board_path(board: board), class: "w-button follow_button_show", method: :put, remote: true do %>
+         <div class="follow_text">unFollow Board</div>
+     <% end %>
+  <% else %>
+       <%= link_to follow_board_path(board: board), class: "w-button follow_button_show", method: :put, remote: true do %>
+         <div class="follow_text">Follow Board</div>
+       <% end %>
+<% end %>

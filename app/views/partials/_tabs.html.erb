@@ -1,0 +1,28 @@
+<div class="tabs">
+  <div class="w-container">
+    <%= link_to has_boards_path(@user.profile_name), data: {:no_turbolink => 'true'}, class: "w-inline-block tab_item tab_boards" do %>
+      <div><%= @user.boards.count %></div>
+      <div>Boards</div>
+    <% end %>
+    <%= link_to likes_pins_path(@user.profile_name), data: {:no_turbolink => 'true'}, class: "w-inline-block tab_item tab_likes" do %>
+      <div><%= @user.find_liked_items.count %></div>
+      <div>Likes</div>
+    <% end %>
+    <%= link_to all_pins_path(@user.profile_name), data: {:no_turbolink => 'true'}, class: "w-inline-block tab_item tab_pins" do %>
+      <div><%= @user.pins.count %></div>
+      <div>Pins</div>
+    <% end %>
+    <%= link_to following_users_path(@user.profile_name), data: {:no_turbolink => 'true'}, class: "w-inline-block tab_item tab_following_users" do %>
+      <div><%= @user.following_users.count %></div>
+      <div>Following users</div>
+    <% end %>
+    <%= link_to users_followers_path(@user.profile_name), data: {:no_turbolink => 'true'}, class: "w-inline-block tab_item tab_followers" do %>
+      <div><%= @user.users_followers.count %></div>
+      <div>Followers</div>
+    <% end %>
+    <%= link_to following_boards_path(@user.profile_name), data: {:no_turbolink => 'true'}, class: "w-inline-block tab_item tab_following_boards" do %>
+      <div><%= @user.following_boards.count %></div>
+      <div>Following boards</div>
+    <% end %>
+  </div>
+</div>

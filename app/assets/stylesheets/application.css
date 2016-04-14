@@ -1,0 +1,400 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require sweetalert
+ *= require_self
+ */
+ 
+.search_form_wrapper {
+  display: inline-block;
+}
+
+.search_form_input {
+  position: static;
+  display: inline-block;
+  width: 330px;
+  margin-top: 10px;
+  margin-right: -5px;
+  margin-right: 0px;
+  clear: none;
+}
+
+.search_button {
+  background-color: gray;
+  margin-left: -5%;
+  margin-right: 30px;
+  margin-bottom: 10px;
+  padding-bottom: 12px;
+  float: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.bb {
+  padding: 2% 5% 5% 5%;
+  overflow-y: scroll;
+}
+
+#pin_title {
+  width: 50%;
+  padding: 2%;
+  margin-bottom: 5%;
+  margin-top: 2%;
+  text-align: center;  
+}
+
+.inputfile {
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.list_item {
+  margin-top: 1%;
+}
+
+.pagination {
+  display: none;
+}
+
+#new_pin {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  padding-top: 15px;
+  padding-bottom: 0px;
+  z-index: 15;
+}
+
+.button_start {
+  width: 100%;
+  padding: 5%;
+}
+.selected_board {
+  background-color: rgba(49, 49, 49, 0.86);
+  color: white;
+}
+
+.disabled_styling {
+  background-color: #8E8E8E;
+}
+
+.grid {
+  margin-left: 2%;
+}
+
+.create_board_cover {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: rgba(48, 48, 48, 0.85);
+  z-index: 50;
+}
+
+.board_wrapper {
+  position: relative;
+  display: inline-block;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 18%;
+  height: 300px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  background-color: white;
+  box-shadow: #868686 0 1px 2px 0;
+  color: #4d4d4d;
+  text-decoration: none;
+}
+
+.create_board_holder {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  border-radius: 3px;
+  right: 0px;
+  bottom: 0px;
+  display: block;
+  width: 40%;
+  height: 60%;
+  margin: auto;
+  padding-top: 3%;
+  padding-right: 5%;
+  padding-left: 5%;
+  background-color: white;
+}
+
+.pin_avatar {
+  padding-top: 20vh; 
+  cursor: pointer; 
+  width: 150px;
+}
+
+.board_text_field {
+  border-style: none;
+  text-align: center;
+   height: 100px;
+}
+
+.board_create_title {
+  margin-bottom: 20px;
+}
+
+.pin_menu {
+  margin-left: 1%;
+  opacity: 0.49;
+  cursor: pointer;
+  float:left;
+  padding-top: 2%;
+  margin-right: 2%;
+}
+
+.link_back_button {
+  position: fixed;
+  top: 20%;
+  right: 0px;
+  display: block;
+  padding: 2%;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+  background-color: #0098ff;
+  box-shadow: black 0px 0px 8px 0px inset;
+  -webkit-transform: translate(95%, 0px);
+  -ms-transform: translate(95%, 0px);
+  transform: translate(95%, 0px);
+  color: white;
+  font-size: 1em;
+  line-height: 1em;
+  text-align: center;
+  text-decoration: none;
+  z-index: 10100;
+}
+
+.link_back_button:hover {
+  border-radius: 10px 0px 0px 10px;
+  box-shadow: none;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.pavlik {
+  width: 250px;
+  border: 1px none black;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.link_text {
+  font-family: Lato, sans-serif;
+  font-size: 1em;
+  line-height: 1.2em;
+  font-weight: 700;
+  text-align: center;
+}
+
+.pin_menu:hover {
+  opacity: 1;
+}
+
+.board_menu:hover {
+  opacity: 1;
+}
+
+.board_menu {
+  opacity: 0.49;
+  cursor: pointer;
+  float:left;
+  padding-top: 2%;
+  margin-right: 1%;
+}
+
+.create_board_button {
+  border-radius: 3px;
+  margin-top: 5%;
+  padding: 4%;
+}
+
+.create_board_button:hover {
+  background-color: #1a8cf0;
+}
+
+.w--nav-menu-open {
+    background: #FFFFFF;
+}
+  
+.navbar_avatar {
+  width: 35px;
+  margin-top: 2%;
+  border-radius: 50%;
+}
+
+.ff {
+  opacity: 0.5;
+  float: right;
+  cursor: pointer;
+  width: 15px;
+}
+
+.ff:hover {
+  opacity: 1;  
+}
+
+.person_likes_grid {
+  width: 100%;
+  margin: auto;
+}
+
+.grid-sizer,
+.grid-item {
+  width: 19.1%;  
+  overflow:hidden;
+}
+
+.grid-item {
+  float: left;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 991px) {
+  
+  .grid-sizer,
+  .grid-item {
+    width: 23%;  
+  }
+  
+  .create_board_holder {
+    width: 70%;
+  }
+  
+  .search_form_input {
+    width: 230px;
+  }
+  
+  .board_wrapper {
+    height: 250px;
+  }
+  
+  .create_pin_holder {
+    width: 90vw;
+  }
+  .pavlik {
+    width: 150px;
+  }
+}
+
+
+
+@media (max-width: 767px) {
+  
+  .grid-sizer,
+  .grid-item {
+    width: 30%;  
+    margin-bottom: 5px;
+  }
+  
+  .search_form_wrapper {
+    display: none;
+  }
+  .repin_holder {
+    height: 100%;
+  }
+  
+  .pavlik {
+    width: 50px;
+  }
+  
+  .pin-user-info {
+    font-size: 10px;
+  }
+  
+  .search_form_input {
+   width: 150px; 
+  }
+  
+  .profile_hero {
+    height: 65vh;
+  }
+  
+  .description {
+    font-size: 10px;
+    line-height: 10px;
+  }
+  .tabs {
+    font-size: 10px;
+  }
+  .board_wrapper {
+    width: 25%;
+    height: 250px;
+  }
+  
+  .board_text_field {
+    height: 50px;
+  }
+  
+  .create_board_holder {
+    width: 95%;
+    height: 95%;
+  }
+  
+  .pin_avatar {
+    width: 50px;
+    
+  }
+  
+  .create_pin_col_1 {
+    height: 95vh;
+  }
+  
+  .create_pin_holder {
+    height: 95vh;
+  }
+}
+
+@media (max-width: 479px) {
+
+  .grid-sizer,
+  .grid-item {
+    width: 45%;  
+  }
+  
+  .board_wrapper {
+    height: 250px;
+    width: 45%;
+  }
+  
+  .create_pin_holder {
+    height: 95vh;
+  }
+  
+  .actions {
+    height: 100px;
+  }
+  
+  .profile_hero {
+    height: 40vh;
+  }
+  
+  .create_pin_col_1 {
+    height: 60vh;
+  }
+}

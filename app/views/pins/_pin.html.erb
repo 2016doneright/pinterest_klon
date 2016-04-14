@@ -1,0 +1,30 @@
+<div class=" grid-item pin_wrapper pin_<%= pin.id %>" data-pin=<%= pin.id %> >
+    <div class="pin_picture_cover">
+        <div class="pin_holder">
+            <%= image_tag(pin.image.url(:frontpage), class: 'border') %>
+        </div>
+        <div class="cover_right">
+            <div class="actions" style="transform:scale(0.6);">
+                <div class="w-inline-block pin_button_holder">
+                    <img src="https://daks2k3a4ib2z.cloudfront.net/55eb2faca85cc70a6a61a2ee/566379ce6568717a4207d58e_retweet_white.svg"  class="pin_button"></div>
+                <%= render 'pins/like', pin: pin %>
+            </div>
+            <%= link_to pin_path(pin), class: "w-inline-block to_pin", data: {no_turbolink: true} do %>
+            <img src="https://daks2k3a4ib2z.cloudfront.net/55eb2faca85cc70a6a61a2ee/566ff6291d18a58c4e85d36e_chevron-right_white.svg" class="chevron_right">
+            <% end %>
+        </div>
+    </div>
+    <div class="description">
+        <div class="title"><strong><%= pin.title %></strong></div>
+    </div>
+    <div class="w-clearfix pin-user-info">
+        <%= link_to has_boards_path(pin.user.profile_name), data: {no_turbolink: true} do %>
+           <%= image_tag pin.user.avatar.url, class: "pin-avatar" %>
+        <% end %>
+        <div class="pin-user-name"><%= pin.user.real_name %></div>
+        <%= link_to board_path(pin.board), class: "pinboardname", data: {no_turbolink: true} do %>
+            <%= pin.board.title %>
+        <% end %>
+    </div>
+</div>
+

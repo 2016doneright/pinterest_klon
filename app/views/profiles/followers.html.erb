@@ -1,0 +1,12 @@
+<%= render 'partials/profile_header' %>
+
+<% @users.each do |user| %>
+    <div class="w-inline-block board_wrapper user_<%= user.id %>">
+        <h4 class="board_title"><%= user.real_name %></h4>
+          <%= link_to has_boards_path(user.profile_name), data: {:no_turbolink => 'true'} do %>
+            <div class="board_featured" style='background-image: url(<%= user.avatar.url %>);'></div>
+          <% end %>
+        <h6><%= pluralize(user.users_followers.count, 'User') %> following him</h6>
+        <%= render 'partials/follow_user', user: user %>
+    </div>
+<% end %>

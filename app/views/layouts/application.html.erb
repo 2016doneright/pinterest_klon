@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>pinterest</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js", 'data-turbolinks-track' => true></script>
+  <%= csrf_meta_tags %>
+  
+  <!--google analytics-->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-71745087-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class='body'>
+<div data-collapse="medium" data-animation="default" data-duration="400" data-contain="1" class="w-nav navbar">
+    <div class="w-container" style='max-width: 1100px;'>
+        
+        <img width="20" src="https://daks2k3a4ib2z.cloudfront.net/55eb2faca85cc70a6a61a2ee/5677ec0bf53d0d481a9d983a_attachment.svg" class='pin_menu'>
+        <img width="20" src="https://daks2k3a4ib2z.cloudfront.net/55eb2faca85cc70a6a61a2ee/5677ec0873b48a431a042582_blackboard.svg" class="board_menu">
+        
+        <nav role="navigation" class="w-nav-menu nav_menu">
+            
+            <%= link_to 'Home', root_path, class: "w-nav-link", data: {no_turbolink: 'true'} %>
+            <%= link_to destroy_user_session_path, method: :delete, class: "w-nav-link" do %>Sign is as different user (one click)
+            <% end %>
+            <%= link_to has_boards_path(current_user.profile_name), data: {no_turbolink: 'true'}, class: "w-inline-block navbar_avatar" do %>
+                <%= image_tag(current_user.avatar.url, class: "navbar_avatar") %>
+            <% end %>
+            <%= link_to has_boards_path(current_user.profile_name), data: {no_turbolink: 'true'}, class: "w-nav-link user_real_name" do %>
+                <%= current_user.real_name %>
+            <% end %>
+        </nav>
+        
+        <div class="w-nav-button">
+            <div class="w-icon-nav-menu"></div>
+        </div>
+    </div>
+</div>
+
+
+<%= yield %>
+
+
+<script>
+    $(document).ready(function(){
+         $("body").niceScroll({
+            zindex: 9999,
+            cursorborder: "0px",
+            background: 'white',
+            cursorwidth: '7px'
+         });
+         
+        $('.search_button').attr('disabled', 'true')
+        $('#board_category').addClass('w-select');
+        $('.repin_close').click(function(){
+            $('.create_pin_cover').css({"display":"none"})
+            $('.create_board_cover').css({'display':'none'})
+        })
+        
+        $('.pin_black').click(function(){
+           $('.create_pin_cover').css({"display":"block"})
+       })  
+       
+       $('.board_black').click(function(){
+           $('.create_board_cover').css({"display":"block"})
+       })
+       
+       $('.pin_menu').click(function(){
+           $('.create_pin_cover').css({"display":"block"})
+       })
+       
+       $('.board_menu').click(function(){
+           $('.create_board_cover').css({"display":"block"})
+       })
+       
+       $('.repin_col_2').niceScroll()
+    })
+</script>
+
+<img width="28" src="https://daks2k3a4ib2z.cloudfront.net/55eb2faca85cc70a6a61a2ee/5677ec0bf53d0d481a9d983a_attachment.svg" class="pin_black">
+<img width="20" src="https://daks2k3a4ib2z.cloudfront.net/55eb2faca85cc70a6a61a2ee/5677ec0873b48a431a042582_blackboard.svg" class="board_black">
+
+<%= render 'partials/create_pin' %>
+<%= render 'partials/create_board' %>
+</body>
+
+</html>

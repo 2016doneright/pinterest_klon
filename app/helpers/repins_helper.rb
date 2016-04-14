@@ -1,0 +1,2 @@
+module RepinsHelper
+end

@@ -1,0 +1,14 @@
+<%= render 'partials/profile_header' %>
+
+<% @following_boards.each do |board| %>
+    <div class="w-inline-block board_wrapper board_<%= board.id %>">
+        <h4 class="board_title"><%= board.title %></h4>
+        <%= link_to board_path(board), data: {:no_turbolink => 'true'} do %>
+            <div class="board_featured" style='background-image: url(<%= board.pins.sample.image.url(:frontpage) if board.pins.present? %>);'>
+                
+            </div>
+        <% end %>
+        <h6><%= pluralize(board.pins.count, 'Pin') %> inside</h6>
+        <%= render 'partials/follow_board', board: board, user: @user %>
+    </div>
+<% end %>

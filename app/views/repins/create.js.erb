@@ -1,0 +1,8 @@
+<% if @repin.save %>
+    swal({   
+        title: "Good job!",   
+        text: "Then pin has been saved to a board <%= @board.title.html_safe %>!",   
+        type: "success",
+        timer: 2000
+        });
+<% end %>
